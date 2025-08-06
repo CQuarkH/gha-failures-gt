@@ -872,6 +872,16 @@ GHRunnersCollection >> getRightCenterPoint: aBox [
 ]
 
 { #category : #'as yet unclassified' }
+GHRunnersCollection >> gtLayerDesignView: aView [
+	<gtView>
+	^   aView explicit
+		title: 'Layer Design';
+		priority: 10;
+		stencil: [ self layerDesignView: 'build-and-deploy' ];
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
 GHRunnersCollection >> highlightSelected: selectedElement selectedElements: selectedElements layer: layerNumber [
     "Destacar el elemento seleccionado y quitar highlight de otros"
     | previousSelected |
@@ -969,13 +979,7 @@ GHRunnersCollection >> layerDesignView: workflowName [
 	"9) Crear elemento pannable"
 	pannableElement := zoomableContainer asPannableElement.
 	
-	"10) Crear ventana"
-	space := BlSpace new.
-	space root addChild: pannableElement.
-	space title: 'GitHub Workflow Layer Design (Zoomable)'.
-	space extent: 1200 @ 800.
-	space show.
-	^ space
+	^ pannableElement
 ]
 
 { #category : #'as yet unclassified' }
